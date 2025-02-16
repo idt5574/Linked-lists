@@ -11,13 +11,13 @@ int main()
 
     lst.traverse();
 
-    std::cout << lst.search(99) << std::endl;
+    std::cout << lst.search(99) << ' ' << lst.length() << std::endl;
 
     lst.pop();
 
     lst.traverse();
 
-    std::cout << lst.search(99) << std::endl;
-
+    std::cout << lst.search(99) << ' ' << lst.length() << std::endl;
+    
     return 0;
 }

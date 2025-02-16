@@ -25,6 +25,7 @@ public:
 
     void traverse();
     bool search(int target);
+    size_t length();
 
 };
 

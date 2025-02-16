@@ -70,3 +70,17 @@ bool SinglyLinkedList::search(int target)
 
     return false;
 }
+
+size_t SinglyLinkedList::length()
+{
+    size_t len {0};
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        len++;
+        current = current->get_next();
+    }
+
+    return len;
+}
