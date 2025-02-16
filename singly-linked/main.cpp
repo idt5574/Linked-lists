@@ -6,20 +6,16 @@ int main()
 {
     SinglyLinkedList lst{0};
 
-    for(int i = 1; i < 10; i++)
+    for(int i = 1; i < 3; i++)
         lst.push(i);
 
     lst.traverse();
 
-    std::cout << lst.search(99) << ' ' << lst.length() << std::endl;
+    std::cout << lst.length() << std::endl;
 
-    lst.push(14, true);
-    lst.insert(42, 5);
-    lst.push(88, false);
+    lst.remove(1);
 
     lst.traverse();
-
-    std::cout << lst.search(99) << ' ' << lst.length() << std::endl;
 
     return 0;
 }

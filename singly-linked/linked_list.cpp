@@ -30,6 +30,7 @@ void SinglyLinkedList::push(int data, bool inBegining)
     head = newNode;
 }
 
+
 void SinglyLinkedList::insert(int data, int pos)
 {
     if(pos < 0 || pos > length())
@@ -59,6 +60,7 @@ void SinglyLinkedList::insert(int data, int pos)
     prev->set_next(temp);
 }
 
+
 Node* SinglyLinkedList::pop()
 {
     if(head == nullptr) return nullptr;
@@ -78,6 +80,50 @@ Node* SinglyLinkedList::pop()
     second_last->set_next(nullptr);
 
     return head;
+}
+
+Node* SinglyLinkedList::pop(bool inBegining)
+{
+    if(!inBegining) return pop();
+
+    if(head == nullptr) return nullptr;
+
+    Node* temp = head;
+    head = head->get_next();
+
+    delete temp;
+
+    return head;
+}
+
+
+Node* SinglyLinkedList::remove(int position)
+{
+    if(head == nullptr || position < 0) 
+    {
+        std::cout << "Node with transfered position is already doesn't exist!\n";
+        return head;
+    }
+
+    if(position == 0) return pop(true);
+
+    Node* current = head;
+    int count = 0;
+    while (count < position - 1 && current != nullptr)
+    {
+        ++count;
+        current = current->get_next();
+    }
+
+    if(current == nullptr || current->get_next() == nullptr)
+        return nullptr;
+
+    Node* temp = current->get_next();
+    current->set_next(temp->get_next());
+
+    delete temp;
+
+    return temp;
 }
 
 

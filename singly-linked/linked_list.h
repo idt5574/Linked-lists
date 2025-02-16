@@ -23,12 +23,15 @@ public:
     void push(int);
     void push(int, bool);
 
-    void insert(int data, int pos);
+    void insert(int, int);
 
     Node* pop();
+    Node* pop(bool);
+
+    Node* remove(int);
 
     void traverse();
-    bool search(int target);
+    bool search(int);
     size_t length();
 
 };
