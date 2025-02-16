@@ -21,6 +21,10 @@ public:
     // other functions
 
     void push(int);
+    void push(int, bool);
+
+    void insert(int data, int pos);
+
     Node* pop();
 
     void traverse();

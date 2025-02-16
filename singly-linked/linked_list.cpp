@@ -19,6 +19,46 @@ void SinglyLinkedList::push(int data)
     curr->set_next(newNode); // Создаём для текущей ноды - следующую
 }
 
+void SinglyLinkedList::push(int data, bool inBegining)
+{
+    if(!inBegining) return push(data);
+
+    Node* newNode = new Node(data);
+
+    newNode->set_next(head);
+
+    head = newNode;
+}
+
+void SinglyLinkedList::insert(int data, int pos)
+{
+    if(pos < 0 || pos > length())
+    {
+        std::cout << "ERROR! Invalid insertion position!\n";
+        return;
+    }
+
+    if(pos == 0) return push(data, true);
+
+    Node* prev = head;
+    int count {0};
+    while (count < pos - 1 && prev != nullptr)
+    {
+        prev = prev->get_next();
+        count++;
+    }
+
+    if(prev == nullptr)
+    {
+        std::cout << "ERROR! Invalid insertion position!\n";
+        return;
+    }
+    
+    Node* temp = new Node(data);
+    temp->set_next(prev->get_next());
+    prev->set_next(temp);
+}
+
 Node* SinglyLinkedList::pop()
 {
     if(head == nullptr) return nullptr;
@@ -40,21 +80,24 @@ Node* SinglyLinkedList::pop()
     return head;
 }
 
+
 void SinglyLinkedList::traverse() // вывод списка в консоль
 {
     Node* current = head;
+    int count = 0;
     
     std::cout << "START" << std::endl;
 
     while (current != nullptr)
     {
-        std::cout << current->get_data() << std::endl; 
+        std::cout << count++ << ") " << current->get_data() << std::endl; 
         
         current = current->get_next();
     }
 
     std::cout << "END" << std::endl;
 }
+
 
 bool SinglyLinkedList::search(int target)
 {
@@ -70,6 +113,7 @@ bool SinglyLinkedList::search(int target)
 
     return false;
 }
+
 
 size_t SinglyLinkedList::length()
 {
