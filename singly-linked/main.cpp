@@ -11,9 +11,13 @@ int main()
 
     lst.traverse();
 
+    std::cout << lst.search(99) << std::endl;
+
     lst.pop();
 
     lst.traverse();
+
+    std::cout << lst.search(99) << std::endl;
 
     return 0;
 }

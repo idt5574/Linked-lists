@@ -55,3 +55,18 @@ void SinglyLinkedList::traverse() // вывод списка в консоль
 
     std::cout << "END" << std::endl;
 }
+
+bool SinglyLinkedList::search(int target)
+{
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        if(current->get_data() == target)
+            return true;
+        
+        current = current->get_next();
+    }
+
+    return false;
+}

@@ -24,7 +24,7 @@ public:
     Node* pop();
 
     void traverse();
-    bool search();
+    bool search(int target);
 
 };
 
