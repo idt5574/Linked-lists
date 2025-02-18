@@ -97,17 +97,26 @@ Node* DoublyLinkedList::pop(bool inStart)
     return head;
 }
 
-// Node* DoublyLinkedList::remove(int pos)
-// {
-//     if(!head) return head;
+Node* DoublyLinkedList::remove(int pos)
+{
+    if(!head) return head;
 
-//     Node* curr = head;
+    Node* curr = head;
 
-//     for(int i = 0; curr && i < pos; ++i)
-//         curr = curr->get_next();
+    for(int i = 0; curr && i < pos; ++i)
+        curr = curr->get_next();
 
-//     if(!curr) return
-// }
+    if(!curr) return head;
+
+    if(curr->get_prev())
+        curr->get_prev()->set_next(curr->get_next());
+
+    if(curr->get_next())
+        curr->get_next()->set_prev(curr->get_prev());
+    
+    delete curr;
+    return head;
+}
 
 void DoublyLinkedList::traverse()
 {
